@@ -1,4 +1,4 @@
-# Custom New Tab Page
+# Custom New Tab Page Revived
 
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/MethodGrab/firefox-custom-new-tab-page/CI.yaml?branch=master&style=flat-square)](https://github.com/MethodGrab/firefox-custom-new-tab-page/actions/workflows/CI.yaml)
 [![Version](https://img.shields.io/amo/v/custom-new-tab-page?style=flat-square)][amo]
