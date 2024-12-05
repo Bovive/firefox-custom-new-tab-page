@@ -1,5 +1,13 @@
 const log = false;
 
+function setFavicon(url) {
+	  let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+	  link.type = 'image/x-icon';
+	  link.rel = 'shortcut icon';
+	  link.href = url;
+	  document.getElementsByTagName('head')[0].appendChild(link);
+	}
+
 const showCustomPage = async opts => {
 	log && console.debug( '[showCustomPage] init', opts );
 
@@ -53,10 +61,12 @@ const showCustomPage = async opts => {
 	iframe.src = opts.customNewTabUrl;
 
 	document.body.append( iframe );
+
+	setFavicon(opts.customFavicon);
 };
 
 const init = _ => {
-	browser.storage.sync.get([ 'customNewTabUrl', 'customNewTabTitle', 'theme', 'customBackgroundColor' ])
+	browser.storage.sync.get([ 'customNewTabUrl', 'customNewTabTitle', 'customFavicon', 'theme', 'customBackgroundColor' ])
 		.then( showCustomPage );
 };
 

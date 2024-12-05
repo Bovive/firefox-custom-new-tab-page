@@ -233,6 +233,7 @@ const saveOptions = async e => {
 	const options = {
 		customNewTabUrl: document.getElementById( 'customNewTabUrl' ).value,
 		customNewTabTitle: document.getElementById( 'customNewTabTitle' ).value,
+		customFavicon: document.getElementById( 'customFavicon' ).value,
 		theme: document.getElementById( 'theme' ).value,
 		customBackgroundColor: document.getElementById( 'customBackgroundColor' ).value,
 		removeIframeHeaders: getRemoveIframeHeadersValue(),
@@ -249,6 +250,7 @@ const restoreOptions = async _ => {
 	const options = await browser.storage.sync.get([
 		'customNewTabUrl',
 		'customNewTabTitle',
+		'customFavicon',
 		'theme',
 		'customBackgroundColor',
 		'removeIframeHeaders',
@@ -259,6 +261,7 @@ const restoreOptions = async _ => {
 
 	document.getElementById( 'customNewTabUrl' ).value = options.customNewTabUrl || '';
 	document.getElementById( 'customNewTabTitle' ).value = options.customNewTabTitle || '';
+	document.getElementById( 'customFavicon' ).value = options.customFavicon || '';
 	document.getElementById( 'theme' ).value = options.theme || 'none';
 	document.getElementById( 'customBackgroundColor' ).value = options.customBackgroundColor || '';
 
@@ -279,7 +282,7 @@ document.querySelector( 'form' ).addEventListener( 'submit', saveOptions );
 
 // this blur will fail with `permissions.request may only be called from a user input handler` if the input is programatically blurred (e.g. by changing tab while focused on the input) but thats ok.
 document.getElementById( 'customNewTabUrl' ).addEventListener( 'blur', refreshPermissions );
-
+document.getElementById( 'customFavicon' ).addEventListener( 'blur', refreshPermissions );
 document.getElementById( 'theme' ).addEventListener( 'change', updateCustomBackgroundColorVisibility );
 document.getElementById( 'removeIframeHeaders' ).addEventListener( 'change', refreshPermissions );
 document.getElementById( 'forceOpenInTopFrame' ).addEventListener( 'change', refreshPermissions );
